@@ -13,7 +13,7 @@ const Formulario = ({ setMensaje, setColor, nuevoColaborador }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (nombre && email && edad && cargo && telefono) {
-            nuevoColaborador({id: Date.now().toString(), nombre, email, edad, cargo, telefono})
+            nuevoColaborador({id: Date.now().toString(), nombre, correo: email, edad, cargo, telefono})
             setMensaje("Registro exitoso");
             setColor("success");
             setNombre("");
