@@ -10,6 +10,7 @@ import Formulario from './components/Formulario';
 import { BaseColaboradores } from './data/baseColaboradores';
 
 const App = () => {
+  const [colaboradoresFiltro, setColaboradoresFiltro]= useState([])
 
   return (
     <Container fluid>
@@ -18,10 +19,12 @@ const App = () => {
           <div>
               <h1>Listado de colaboradores</h1>
           </div>
-          <Buscador />
+          </Col>
+          <Col xs={6}>
+          <Buscador colaboradores={BaseColaboradores} setColaboradoresFiltro={setColaboradoresFiltro}/>
         </Col>
         <Col xs={8}>
-          <Listado colaboradores={BaseColaboradores} />
+          <Listado colaboradores= {colaboradoresFiltro.length > 0 ? colaboradoresFiltro : BaseColaboradores }/>
         </Col>
         <Col xs={4}>
           <Formulario />
