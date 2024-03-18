@@ -14,14 +14,18 @@ const App = () => {
   return (
     <Container fluid>
       <Row>
-        <Col xs={8}>
+        <Col xs={12}>
           <div>
               <h1>Listado de colaboradores</h1>
           </div>
           <Buscador />
+        </Col>
+        <Col xs={8}>
           <Listado colaboradores={BaseColaboradores} />
         </Col>
-        <Formulario />
+        <Col xs={4}>
+          <Formulario />
+        </Col>
       </Row>
     </Container>
   )
