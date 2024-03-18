@@ -10,9 +10,16 @@ import Alert from './components/Alert';
 
 import { BaseColaboradores } from './data/baseColaboradores';
 
-const App = (props) => {
-  const { mensaje, setMensaje, color, setColor } = props
-  const [colaboradoresFiltro, setColaboradoresFiltro]= useState([])
+const App = () => {
+  const [color, setColor] = useState("")
+  const [mensaje, setMensaje] = useState("")
+  const [colaboradoresFiltro, setColaboradoresFiltro] = useState([])
+
+  const [colaboradores, setColaboradores] = useState(BaseColaboradores)
+
+  const nuevoColaborador = (datos) => {
+    setColaboradores = ([...colaboradores, datos])
+  }
 
   return (
     <Container fluid>
@@ -21,15 +28,16 @@ const App = (props) => {
           <div>
               <h1>Listado de colaboradores</h1>
           </div>
-          </Col>
-          <Col xs={6}>
-          <Buscador colaboradores={BaseColaboradores} setColaboradoresFiltro={setColaboradoresFiltro}/>
-        </Col>
-        <Col xs={8}>
-          <Listado colaboradores= {colaboradoresFiltro.length > 0 ? colaboradoresFiltro : BaseColaboradores }/>
         </Col>
         <Col xs={4}>
-        <Formulario mensaje={mensaje} setMensaje={setMensaje} color={color} setColor={setColor} /> {mensaje ? <Alert {...props} /> : null }
+          <Buscador colaboradores={colaboradores} setColaboradoresFiltro={setColaboradoresFiltro}/>
+        </Col>
+        <Col xs={8}></Col>
+        <Col xs={8}>
+          <Listado colaboradores= {colaboradoresFiltro.length > 0 ? colaboradoresFiltro : colaboradores }/>
+        </Col>
+        <Col xs={4}>
+        <Formulario nuevoColaborador={nuevoColaborador} mensaje={mensaje} setMensaje={setMensaje} color={color} setColor={setColor} /> {mensaje ? <Alert mensaje={mensaje} color={color} /> : null }
         </Col>
       </Row>
     </Container>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Form, Button } from "react-bootstrap";
 
 
-const Formulario = ({ setMensaje, setColor }) => {
+const Formulario = ({ setMensaje, setColor, nuevoColaborador }) => {
 
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
@@ -10,27 +10,21 @@ const Formulario = ({ setMensaje, setColor }) => {
     const [cargo, setCargo] = useState("");
     const [telefono, setTelefono] = useState("");
 
-    const validarEmail = (email) => {
-        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        return regex.test(email);
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (nombre && email && edad && cargo && telefono) {
-            if (validarEmail(email)) {
-              setMensaje("Registro exitoso");
-              setColor("success");
-              setNombre("");
-              setEmail("");
-              setPassword("");
-              setConfirm("");
-            }  else {
-            setMensaje("El email no es valido");
-            setColor("danger");} 
+            nuevoColaborador = ({id: Date.now().toString(), nombre, email, edad, cargo, telefono})
+            setMensaje("Registro exitoso");
+            setColor("success");
+            setNombre("");
+            setEmail("");
+            setEdad("");
+            setCargo("");
+            setTelefono("");
+            
         } else {
-          setMensaje("Completa todos los campos");
-          setColor("danger");
+            setMensaje("Completa todos los campos");
+            setColor("danger");
         }
     };
 
