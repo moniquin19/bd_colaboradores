@@ -18,8 +18,9 @@ const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
 
   const nuevoColaborador = (datos) => {
-    setColaboradores = ([...colaboradores, datos])
+    setColaboradores([...colaboradores, datos]);
   }
+  
 
   return (
     <Container fluid>
