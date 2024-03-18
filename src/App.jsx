@@ -6,10 +6,12 @@ import './App.css'
 import Buscador from './components/Buscador'
 import Listado from './components/Listado';
 import Formulario from './components/Formulario';
+import Alert from './components/Alert';
 
 import { BaseColaboradores } from './data/baseColaboradores';
 
-const App = () => {
+const App = (props) => {
+  const { mensaje, setMensaje, color, setColor } = props
   const [colaboradoresFiltro, setColaboradoresFiltro]= useState([])
 
   return (
@@ -27,7 +29,7 @@ const App = () => {
           <Listado colaboradores= {colaboradoresFiltro.length > 0 ? colaboradoresFiltro : BaseColaboradores }/>
         </Col>
         <Col xs={4}>
-          <Formulario />
+        <Formulario mensaje={mensaje} setMensaje={setMensaje} color={color} setColor={setColor} /> {mensaje ? <Alert {...props} /> : null }
         </Col>
       </Row>
     </Container>
